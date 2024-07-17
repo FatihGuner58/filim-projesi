@@ -1,0 +1,27 @@
+.detail-page {
+  text-align: center;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.detail-page h2 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.detail-page img {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.detail-page p {
+  font-size: 1.2em;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.detail-page .release-date {
+  font-style: italic;
+}

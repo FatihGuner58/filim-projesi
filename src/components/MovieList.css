@@ -1,0 +1,61 @@
+.movie-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .movie {
+    width: 275px; 
+    background-color: #b08888;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .movie-poster {
+    width: 100%;
+    height: auto;
+  }
+  
+  .movie-info {
+    padding: 10px;
+  }
+  
+  .movie h3 {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  .movie p {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0;
+  }
+  .film{
+    border-radius: 15px;
+    background-color: #f3f3f3;
+
+  }
+  .notification {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f0f0f0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  .filtreleme{
+    height: 35px;
+    background-color: rgb(231, 231, 231);
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .green-background {
+    background-color: rgb(60, 232, 60);
+    color: white; /* Yazı rengini beyaz yapabiliriz, okunabilirlik için */
+    padding: 10px;
+    border-radius: 5px;
+}
