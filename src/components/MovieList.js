@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import api from '../api'; // api.js dosyasından axios istemcisini import ediyoruz
 import './MovieList.css'; 
 
 const MovieList = () => {
@@ -9,20 +9,20 @@ const MovieList = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredMovies, setFilteredMovies] = useState([]);
   const [notification, setNotification] = useState('');
-  const [selectedGenre, setSelectedGenre] = useState(''); 
+  const [selectedGenre, setSelectedGenre] = useState('');
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const apiKey = 'cbbe08c6a8ba790440b5597739d49786';
-        let apiUrl = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}`;
+        let apiUrl = '/movie/popular'; // Popüler filmler endpoint'i
+        const params = {};
 
-        
         if (selectedGenre) {
-          apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${selectedGenre}`;
+          apiUrl = '/discover/movie'; // Belirli bir türdeki filmleri keşfet endpoint'i
+          params.with_genres = selectedGenre;
         }
 
-        const response = await axios.get(apiUrl);
+        const response = await api.get(apiUrl, { params });
         setMovies(response.data.results);
       } catch (error) {
         console.error('Error fetching movies:', error);
@@ -44,7 +44,7 @@ const MovieList = () => {
     setFavorites(updatedFavorites);
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
 
-    showNotification(`${movie.title} favorilere eklendi.`, { className: 'green-background' });
+    showNotification(`${movie.title} added to favorites.`, { className: 'green-background' });
   };
 
   const showNotification = (message) => {
@@ -63,25 +63,28 @@ const MovieList = () => {
   };
 
   return (
-    <div>
+    <div className="movie-list-container">
       <h2>Popular Movies</h2>
       <div className="filter-section">
-        <input className='film'
+        <input
+          className='search-input'
           type="text"
-          placeholder="Filmleri Ara"
+          placeholder="Search Movies"
           value={searchQuery}
           onChange={handleSearchChange}
         />
-        <select className='filtreleme' value={selectedGenre} onChange={handleGenreChange}>
+        <select className='filter' value={selectedGenre} onChange={handleGenreChange}>
           <option value="">All</option>
           <option value="35">Comedy</option> 
           <option value="18">Drama</option> 
           <option value="28">Action</option> 
-          
         </select>
       </div>
       <div className="movie-list">
-        {(searchQuery ? filteredMovies : movies).map(movie => (
+        {filteredMovies.length === 0 && searchQuery && (
+          <p className="no-movies-found">Belirtilen isimde film bulunamadı.</p>
+        )}
+        {(filteredMovies.length > 0 ? filteredMovies : movies).map(movie => (
           <div key={movie.id} className="movie">
             <Link to={`/movie/${movie.id}`}>
               <img
@@ -101,7 +104,7 @@ const MovieList = () => {
 
       {notification && <div className="notification">{notification}</div>}
 
-      <div>
+      <div className="favorite-movies">
         <h2>Favorite Movies</h2>
         {favorites.length > 0 ? (
           <ul>

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Favorite.css';
 
 const FavoriteMovies = () => {
   const [favorites, setFavorites] = useState([]);
@@ -13,21 +14,15 @@ const FavoriteMovies = () => {
     const updatedFavorites = favorites.filter(movie => movie.id !== movieId);
     setFavorites(updatedFavorites);
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-  };
-
-  const addToFavorites = (movie) => {
-    const updatedFavorites = [...favorites, movie];
-    setFavorites(updatedFavorites);
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
-    setNotification(`${movie.title} favorilere eklendi.`);
+    setNotification('Movie removed from favorites.');
     setTimeout(() => {
       setNotification('');
     }, 2000);
   };
 
   return (
-    <div>
-      <h2>Favorite Movies</h2>
+    <div className='favorite'>
+      <h2>Favorite History</h2>
       {notification && <p>{notification}</p>}
       {favorites.length > 0 ? (
         <ul>

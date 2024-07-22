@@ -25,3 +25,29 @@
 .detail-page .release-date {
   font-style: italic;
 }
+.cast-list {
+  display: flex;
+  flex-wrap: wrap; /* İhtiyaç halinde oyuncu listesinin alt satıra geçmesini sağlar */
+}
+
+.actor {
+  margin-right: 20px; /* Oyuncular arası boşluk */
+  width: 200px; /* Her oyuncunun genişliği */
+}
+
+.actor-image {
+  width: 100px; /* Oyuncu profil resimlerinin genişliği */
+  height: 300px; /* Oyuncu profil resimlerinin yüksekliği */
+  object-fit: cover; /* Resmi kapsamaya sığdırır */
+  border-radius: 50%; /* Yuvarlak köşeler */
+}
+
+.actor-name {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.actor-character {
+  font-style: italic;
+  margin-top: 5px;
+}

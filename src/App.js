@@ -23,7 +23,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/category/:categoryId" element={<CategoryPage />} />
-          <Route path="/movie/:id" element={<DetailPage title="Movie Details" />} /> 
+          {/* title prop'u ile DetailPage bileşenini kullanımı */}
+          <Route path="/movie/:id" element={<DetailPage title="Selected Movie" />} />
           <Route path="/movies" element={<MovieList categories={categories} />} />
         </Routes>
         <FavoriteMovies />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../api'; // api.js dosyasından axios istemcisini import ediyoruz
+
 
 const CategoryMenu = () => {
   const [categories, setCategories] = useState([]);
@@ -8,11 +9,7 @@ const CategoryMenu = () => {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        // TMDb API'den kategorileri çektim
-        const apiKey = 'cbbe08c6a8ba790440b5597739d49786';
-        const apiUrl = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apiKey}`;
-
-        const response = await axios.get(apiUrl);
+        const response = await api.get('/genre/movie/list');
         setCategories(response.data.genres);
       } catch (error) {
         console.error('Error fetching categories:', error);
