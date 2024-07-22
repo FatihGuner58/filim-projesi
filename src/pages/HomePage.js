@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import api from '../api';
 import MovieSlider from '../components/MovieSlider';
 import MovieList from '../components/MovieList';
-
+import './HomePage.css'
 const HomePage = () => {
   const [topRatedMovies, setTopRatedMovies] = useState([]);
 
@@ -15,7 +15,7 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
+    <div className='Baslik'>
       <h1>Top Rated Movies</h1>
       <MovieSlider movies={topRatedMovies} />
       <MovieList />

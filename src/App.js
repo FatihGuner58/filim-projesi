@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, useLocation } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import CategoryPage from './pages/CategoryPage';
 import DetailPage from './pages/DetailPage';
@@ -8,6 +8,8 @@ import MovieList from './components/MovieList';
 import './App.css';
 
 const App = () => {
+  const location = useLocation();
+
   // Örnek kategori listesi
   const categories = [
     { id: 28, name: 'Action' },
@@ -18,19 +20,27 @@ const App = () => {
   ];
 
   return (
-    <Router>
-      <div className="App">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/category/:categoryId" element={<CategoryPage />} />
-          {/* title prop'u ile DetailPage bileşenini kullanımı */}
-          <Route path="/movie/:id" element={<DetailPage title="Selected Movie" />} />
-          <Route path="/movies" element={<MovieList categories={categories} />} />
-        </Routes>
-        <FavoriteMovies />
-      </div>
-    </Router>
+    <div className="App">
+      {location.pathname === '/' && (
+        <header className='favori'>
+          <Link to="/favorites">Favorilerim</Link>
+        </header>
+      )}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/category/:categoryId" element={<CategoryPage />} />
+        <Route path="/movie/:id" element={<DetailPage title="Selected Movie" />} />
+        <Route path="/movies" element={<MovieList categories={categories} />} />
+        <Route path="/favorites" element={<FavoriteMovies />} />
+      </Routes>
+    </div>
   );
 };
 
-export default App;
+const AppWrapper = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default AppWrapper;
