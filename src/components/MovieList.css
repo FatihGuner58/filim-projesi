@@ -3,13 +3,11 @@
   margin: 0 auto;
   padding: 20px;
 }
-
 .movie-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
-
 .movie {
   position: relative;
   overflow: hidden;
@@ -17,7 +15,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background-color: #fff;
 }
-
 .movie-poster {
   width: 100%;
   height: auto;
@@ -25,24 +22,20 @@
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-
 .movie-info {
   padding: 10px;
   background-color: #fff;
 }
-
 .movie-info h3 {
   margin: 0;
   font-size: 18px;
 }
-
 .filter-section {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-bottom: 20px;
 }
-
 .search-input,
 .filter {
   padding: 10px;
@@ -50,7 +43,6 @@
   border: 1px solid #ccc;
   border-radius: 5px;
 }
-
 .notification {
   position: fixed;
   bottom: 20px;
@@ -61,20 +53,16 @@
   color: #fff;
   border-radius: 5px;
 }
-
 .favorite-movies {
   margin-top: 40px;
 }
-
 .favorite-movies h2 {
   font-size: 24px;
 }
-
 .favorite-movies ul {
   padding: 0;
   list-style-type: none;
 }
-
 .favorite-movies li {
   font-size: 16px;
   margin-bottom: 10px;

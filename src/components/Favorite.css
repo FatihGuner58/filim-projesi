@@ -3,7 +3,6 @@
   justify-content: flex-end; /* Aligns items to the right */
   padding: 10px; /* Optional padding for better appearance */
 }
-
 .favori a {
   text-decoration: none;
   color: white;
@@ -11,7 +10,50 @@
   padding: 10px 20px;
   border-radius: 5px;
 }
-
 .favori a:hover {
   background-color: #0056b3; /* Darker shade on hover */
+}
+.favorite {
+  width: 100%;
+  max-width: 1200px; /* Örnek maksimum genişlik */
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.favorite h2 {
+  margin-bottom: 10px;
+}
+.favorite p {
+  color: green;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.favorite-movie {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px; 
+  text-align: center;
+}
+.favorite-movie img {
+  width: 100%; /* Ensures the image takes up the width of its container */
+  height: auto; /* Keeps the aspect ratio */
+  border-radius: 8px;
+}
+.favorite-movie button {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.favorite-movie button:hover {
+  background-color: #e60000;
 }
